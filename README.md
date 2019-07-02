@@ -1,2 +1,2 @@
 # deno-rpc
-deno rpc 框架
+deno rpc framework
