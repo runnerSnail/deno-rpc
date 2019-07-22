@@ -23,9 +23,11 @@ dvReq.setInt32(6,payloadLength);
 // dvReq
 // str2ab.
 // dvReq.setUint8(10,str2ab('xxx'));
-console.log(str2Uint8Array('xxxx'));
-
-
+// console.log(str2Uint8Array('xxxx'));
+let index = 10; 
+str2Uint8Array(JSON.stringify(payload)).forEach(element => {
+    dvReq.setUint8(index,element);
+});
 
 test({
     name: "BIG_ENDIAN or LITTLE_ENDIAN",
