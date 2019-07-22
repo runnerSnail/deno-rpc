@@ -1,0 +1,14 @@
+namespace base.genflat;
+
+table Request{
+    msgID:long;
+    msgType:string;
+    msgContent:Payload;
+}
+
+
+table Payload {
+  service:string;
+  methodName:string;
+  args:string;
+}
