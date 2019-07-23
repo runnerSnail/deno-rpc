@@ -17,6 +17,22 @@ export function getPlatformEndianness():Symbol {
   }
 }
 
+export function data2buf(data:string){
+  const payloadLength = str2ab(JSON.stringify(data)).byteLength;
+
+  const request = new ArrayBuffer(10 + payloadLength);
+  
+  const dvReq = new DataView(request);
+  dvReq.setInt8(0,1);
+  dvReq.setInt32(1,1000);
+  dvReq.setInt8(5,1);
+  dvReq.setInt32(6,payloadLength);
+  let index = 10; 
+  for (const item of str2Uint8Array(JSON.stringify(JSON.stringify(data)))) {
+      dvReq.setUint8(index++,item);
+  }
+  return ArrayBuffer;
+}
 /**
  * Convert ArrayBuffer/TypedArray to String via TextDecoder
  *
@@ -46,6 +62,8 @@ function ab2str(
     const view = encoder.encode(input)
     return view
   }
+
+
   export{
     ab2str,
     str2ab,
